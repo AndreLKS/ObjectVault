@@ -1,67 +1,119 @@
-# Object Storage Simulator
+# ObjectVault
 
-A lightweight object storage service inspired by Amazon S3, built to explore distributed systems, storage architecture, data consistency, and cloud infrastructure concepts.
+An S3-inspired object storage platform built in Go to explore distributed systems, storage architecture, data consistency, and cloud infrastructure concepts.
 
 ## Features
 
 * Object upload and download API
-* Simple bucket management
+* Bucket management
 * Object versioning
 * Local storage engine with indexed metadata
 * Token-based authentication
 * Data consistency controls
-* Optional caching layer
+* Redis caching layer
 * Checksum and integrity validation
-* Multi-node replication (planned)
-* Observability and metrics (planned)
+* Multi-node replication
+* Metrics and observability
+* Distributed storage simulation
 
 ## Architecture Goals
 
-This project aims to simulate the core components of a modern cloud object storage platform while remaining simple enough for educational and portfolio purposes.
+ObjectVault aims to simulate the core components of a modern cloud object storage service while remaining approachable for learning and experimentation.
 
-The main objectives are:
+The primary goals are:
 
 * Understand how object storage systems work internally
-* Explore metadata management strategies
+* Design scalable storage architectures
 * Implement consistency and durability mechanisms
+* Explore metadata indexing strategies
 * Experiment with replication and fault tolerance
-* Practice scalable backend architecture patterns
+* Practice cloud-native engineering patterns
+* Learn observability and monitoring techniques
 
 ## Tech Stack
 
-* PHP 8.x
-* Laravel
+### Core
+
+* Go 1.25+
+* Chi Router
 * PostgreSQL
 * Redis
 * Docker
-* REST API
+
+### Observability
+
+* Prometheus
+* Grafana
+* OpenTelemetry
+
+### Testing
+
+* Go Testing Package
+* Testcontainers
+
+## High-Level Architecture
+
+```text
+Client
+   |
+REST API
+   |
++----------------------+
+| ObjectVault API      |
++----------------------+
+      |
+      +---- Metadata Layer (PostgreSQL)
+      |
+      +---- Cache Layer (Redis)
+      |
+      +---- Storage Layer (Filesystem)
+      |
+      +---- Replication Layer
+```
 
 ## Roadmap
 
-### Phase 1
+### Phase 1 — Core Storage
 
-* Authentication
-* Bucket creation
 * Object upload
 * Object download
-* Metadata storage
+* Object listing
+* Metadata persistence
+* Docker environment
+* Automated tests
 
-### Phase 2
+### Phase 2 — Storage Features
 
+* Bucket management
 * Object versioning
-* File integrity validation
-* Redis caching
-* Metrics collection
+* Authentication
+* Checksum validation
+* Integrity verification
 
-### Phase 3
+### Phase 3 — Performance
+
+* Redis caching
+* Cache invalidation strategies
+* Performance benchmarks
+
+### Phase 4 — Distributed Systems
 
 * Multi-node replication
-* Consistency strategies
+* Event-driven synchronization
 * Failure recovery
-* Distributed storage simulation
+* Consistency strategies
+
+### Phase 5 — Observability
+
+* Structured logging
+* Prometheus metrics
+* Grafana dashboards
+* OpenTelemetry tracing
 
 ## Why This Project?
 
-Cloud object storage services are a foundational component of modern infrastructure platforms. This project is designed to provide hands-on experience with concepts commonly found in systems such as Amazon S3, Google Cloud Storage, and Azure Blob Storage.
+Modern cloud platforms rely heavily on object storage systems for durability, scalability, and performance.
 
-The focus is on learning storage internals, distributed system design, and infrastructure engineering principles rather than building a production-ready replacement.
+ObjectVault is designed as a learning-oriented infrastructure project focused on understanding the engineering challenges behind systems such as Amazon S3, Google Cloud Storage, MinIO, and Azure Blob Storage.
+
+The goal is not to replace existing storage solutions, but to gain practical experience with distributed systems, cloud-native architecture, data durability, and backend infrastructure engineering.
