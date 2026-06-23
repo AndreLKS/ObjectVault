@@ -1,0 +1,34 @@
+# Arquivos e diretórios de dados
+storage/
+
+# Arquivos de log
+*.log
+
+# Arquivos de dependências e ambientes
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log
+
+# Arquivos de configuração específicos do ambiente
+.env
+.env.*.local
+
+# Arquivos de build
+dist/
+build/
+
+# Arquivos de IDEs e editores de texto
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+tmp/
+temp/
